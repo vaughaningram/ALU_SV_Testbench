@@ -1,37 +1,38 @@
-# Parameterized SystemVerilog ALU + Constrained-Random Verification
+# SystemVerilog ALU (Parameterized RTL + Directed & Random Verification)
 
-A compact SystemVerilog ALU showcasing clean RTL design and a simple yet effective
-verification environment. The module supports add, subtract, AND, OR, XOR, and
-includes zero, carry, and overflow flags. The testbench uses constrained-random
-stimulus, a scoreboard-style expected model, and a basic assertion.
+A compact but professional ASIC/DV-style project demonstrating:
 
-This project is intended as a lightweight but professional example of RTL design
-and verification fundamentals relevant to ASIC, DV, and FPGA workflows.
+- Clean RTL design  
+- Arithmetic flag handling  
+- Directed corner-case tests  
+- Constrained-random testing  
+- Assertions for correctness  
+- Scoreboarding  
+- Coverage-style counters  
 
----
-
-## ✨ Features
-
-- **Parameterized data width** (default 8 bits)  
-- **Add, subtract, AND, OR, XOR** operations  
-- **Zero, carry, overflow** flags  
-- **Clean `unique case` decode** for combinational logic  
-- **Constrained-random verification testbench**  
-- **Scoreboarding** via expected-value model  
-- **Assertion checking** on the zero flag  
+This is representative of fundamentals used in silicon, DV, and FPGA workflows.
 
 ---
 
-## 📁 Files
+## Features
 
-- `alu.sv` — RTL implementation  
-- `tb_alu.sv` — constrained-random self-checking testbench  
+### RTL Design
+- Parameterized width (default 8 bits)  
+- ADD, SUB, AND, OR, XOR  
+- Zero, carry/borrow, signed overflow flags  
+- `unique case` decode for clarity  
+
+### Verification
+- Directed stress tests (overflow, borrow, boundaries)  
+- 100-vector constrained-random regression  
+- Scoreboard comparing DUT vs. expected model  
+- Assertions for zero and overflow correctness  
+- Functional-coverage-style operation counters  
+- PASS/FAIL summary  
 
 ---
 
-## ▶️ Running the Simulation
-
-Example using Icarus Verilog:
+## Running
 
 ```bash
 iverilog -g2012 alu.sv tb_alu.sv -o alu_tb
